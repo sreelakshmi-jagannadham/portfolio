@@ -1,72 +1,152 @@
 import profile from "../data/profile";
+import avatar from "../assets/images/profile/avatar.png";
+
+import { FaGithub, FaLinkedin, FaDownload } from "react-icons/fa";
+import { HiOutlineLocationMarker } from "react-icons/hi";
 
 function Hero() {
   return (
-    <section className="min-h-screen bg-slate-900 flex items-center justify-center px-6">
-      <div className="max-w-5xl mx-auto text-center">
+    <section
+      id="home"
+      className="min-h-[90vh] bg-slate-950 flex items-center px-6 py-10 lg:py-16"
+    >
+      <div className="max-w-7xl mx-auto w-full">
 
-        <p className="text-blue-400 text-xl md:text-2xl font-semibold">
-          👋 Hello, I'm
-        </p>
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
 
-        <h1 className="mt-4 text-6xl md:text-8xl font-black leading-tight">
-          <span className="text-white">
-            {profile.name.split(" ")[0]}
-          </span>
+          {/* Left Section */}
 
-          <br />
+          <div>
 
-          <span className="text-blue-500">
-            {profile.name.split(" ").slice(1).join(" ")}
-          </span>
-        </h1>
+            <p className="text-blue-400 text-lg font-semibold">
+              👋 Hello, I'm
+            </p>
 
-        <p className="mt-8 text-2xl md:text-3xl text-slate-200 font-medium">
-          {profile.role}
-        </p>
+            <h1 className="mt-4 text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight">
 
-        <p className="mt-4 text-lg md:text-xl text-slate-400">
-          {profile.interests.join(" • ")}
-        </p>
+              <span className="text-white">
+                {profile.firstName}
+              </span>
 
-        <p className="mt-8 max-w-3xl mx-auto text-lg text-slate-300 leading-8">
-          {profile.tagline}
-        </p>
+              <br />
 
-        <div className="mt-12 flex flex-wrap justify-center gap-5">
+              <span className="text-blue-500">
+                {profile.lastName}
+              </span>
 
-          <button className="px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl transition duration-300 shadow-lg">
-            📄 Download Resume
-          </button>
+            </h1>
 
-          <a
-            href={profile.github}
-            target="_blank"
-            rel="noreferrer"
-            className="px-8 py-4 border-2 border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white font-semibold rounded-xl transition duration-300"
-          >
-            GitHub
-          </a>
+            <h2 className="mt-6 text-2xl md:text-3xl text-slate-200 font-semibold">
+              {profile.role}
+            </h2>
 
-          <a
-            href={profile.linkedin}
-            target="_blank"
-            rel="noreferrer"
-            className="px-8 py-4 border-2 border-slate-500 text-slate-300 hover:bg-slate-700 hover:text-white font-semibold rounded-xl transition duration-300"
-          >
-            LinkedIn
-          </a>
+            <div className="mt-5 flex items-center gap-2 text-slate-400">
 
-        </div>
+              <HiOutlineLocationMarker className="text-blue-500 text-xl" />
 
-        <div className="mt-20 animate-bounce">
+              <span>{profile.location}</span>
 
-          <p className="text-slate-500 text-sm tracking-widest uppercase">
-            Scroll Down
-          </p>
+            </div>
 
-          <div className="mt-2 text-3xl text-blue-500">
-            ↓
+            <div className="mt-6 flex flex-wrap gap-3">
+
+              {profile.interests.map((item) => (
+                <span
+                  key={item}
+                  className="px-4 py-2 rounded-full bg-slate-800 border border-slate-700 text-slate-300 text-sm hover:border-blue-500 hover:text-blue-400 transition"
+                >
+                  {item}
+                </span>
+              ))}
+
+            </div>
+
+            <p className="mt-8 text-slate-400 text-lg leading-8 max-w-xl">
+              {profile.description}
+            </p>
+
+            <div className="mt-10 flex flex-wrap gap-4">
+
+              <a
+                href={profile.resume}
+                className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 shadow-lg hover:shadow-blue-500/30 px-6 py-3 rounded-xl font-semibold transition duration-300"
+              >
+                <FaDownload />
+                Resume
+              </a>
+
+              <a
+                href={profile.github}
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center gap-2 border border-slate-600 hover:border-blue-500 hover:text-blue-400 px-6 py-3 rounded-xl transition"
+              >
+                <FaGithub />
+                GitHub
+              </a>
+
+              <a
+                href={profile.linkedin}
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center gap-2 border border-slate-600 hover:border-blue-500 hover:text-blue-400 px-6 py-3 rounded-xl transition"
+              >
+                <FaLinkedin />
+                LinkedIn
+              </a>
+
+            </div>
+
+          </div>
+
+          {/* Right Section */}
+
+          <div className="flex justify-center">
+
+            <div className="bg-slate-900 rounded-3xl p-8 shadow-2xl border border-slate-800 max-w-sm w-full">
+
+              <img
+                src={avatar}
+                alt="Profile Avatar"
+                className="w-56 h-56 rounded-full object-cover mx-auto border-4 border-blue-500"
+              />
+
+              <h3 className="mt-6 text-2xl font-bold text-center text-white">
+                {profile.shortName}
+              </h3>
+
+              <p className="text-center text-blue-400 mt-2 font-medium">
+                {profile.branch}
+              </p>
+
+              <div className="mt-8 space-y-4">
+
+                <div className="flex justify-between">
+                  <span className="text-slate-400">College</span>
+                  <span>{profile.degree}</span>
+                </div>
+
+                <div className="flex justify-between">
+                  <span className="text-slate-400">CGPA</span>
+                  <span>{profile.cgpa}</span>
+                </div>
+
+                <div className="flex justify-between">
+                  <span className="text-slate-400">Graduation</span>
+                  <span>{profile.graduation}</span>
+                </div>
+
+                <div className="flex justify-between">
+                  <span className="text-slate-400">Status</span>
+                  <span className="text-green-400">
+                    Open to Internship
+                  </span>
+                </div>
+
+              </div>
+
+            </div>
+
           </div>
 
         </div>
