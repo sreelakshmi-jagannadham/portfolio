@@ -1,58 +1,88 @@
+import { useState } from "react";
+import { FaBars, FaTimes } from "react-icons/fa";
+
 function Navbar() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const navLinks = [
+  { name: "Home", id: "home" },
+  { name: "About", id: "about" },
+  { name: "Skills", id: "skills" },
+  { name: "Projects", id: "projects" },
+  { name: "Experience", id: "experience" },
+  { name: "Education", id: "education" },
+  { name: "Achievements", id: "achievements" },
+  { name: "Certifications", id: "certifications" },
+  { name: "Contact", id: "contact" },
+];
+
   return (
-    <nav className="fixed top-0 left-0 w-full bg-slate-900/80 backdrop-blur-md border-b border-slate-800 z-50">
+    <header className="fixed top-0 left-0 w-full z-50 bg-slate-900/80 backdrop-blur-lg border-b border-slate-800">
+      <div className="max-w-7xl mx-auto px-6">
 
-      <div className="max-w-7xl mx-auto px-8 py-5 flex items-center justify-between">
+        <div className="h-20 flex items-center justify-between">
 
-        {/* Logo */}
-        <h1 className="text-3xl font-black text-blue-500 cursor-pointer">
-          JSL
-        </h1>
+          {/* Logo */}
 
-        {/* Navigation */}
-        <ul className="hidden md:flex items-center gap-10">
+          <a
+            href="#home"
+            className="text-4xl font-black text-blue-500 tracking-wide"
+          >
+            JSL
+          </a>
 
-          <li>
-            <a
-              href="#about"
-              className="text-slate-300 hover:text-blue-500 transition"
-            >
-              About
-            </a>
-          </li>
+          {/* Desktop Menu */}
 
-          <li>
-            <a
-              href="#skills"
-              className="text-slate-300 hover:text-blue-500 transition"
-            >
-              Skills
-            </a>
-          </li>
+          <nav className="hidden md:flex items-center gap-10">
 
-          <li>
-            <a
-              href="#projects"
-              className="text-slate-300 hover:text-blue-500 transition"
-            >
-              Projects
-            </a>
-          </li>
+            {navLinks.map((link) => (
+              <a
+                key={link.name}
+                href={`#${link.id}`}
+                className="text-slate-300 hover:text-blue-500 transition duration-300 font-medium"
+              >
+                {link.name}
+              </a>
+            ))}
 
-          <li>
-            <a
-              href="#contact"
-              className="text-slate-300 hover:text-blue-500 transition"
-            >
-              Contact
-            </a>
-          </li>
+          </nav>
 
-        </ul>
+          {/* Mobile Button */}
+
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="md:hidden text-2xl text-white"
+          >
+            {menuOpen ? <FaTimes /> : <FaBars />}
+          </button>
+
+        </div>
 
       </div>
 
-    </nav>
+      {/* Mobile Menu */}
+
+      {menuOpen && (
+
+        <div className="md:hidden bg-slate-900 border-t border-slate-800">
+
+          {navLinks.map((link) => (
+
+            <a
+              key={link.name}
+              href={`#${link.id}`}
+              onClick={() => setMenuOpen(false)}
+              className="block px-6 py-4 text-slate-300 hover:bg-slate-800 hover:text-blue-500 transition"
+            >
+              {link.name}
+            </a>
+
+          ))}
+
+        </div>
+
+      )}
+    </header>
   );
 }
 

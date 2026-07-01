@@ -79,7 +79,7 @@ function Hero() {
                 href={profile.github}
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center gap-2 border border-slate-600 hover:border-blue-500 hover:text-blue-400 px-6 py-3 rounded-xl transition"
+                className="flex items-center gap-2 border border-slate-600 text-white hover:border-blue-500 hover:text-blue-400 px-6 py-3 rounded-xl transition"
               >
                 <FaGithub />
                 GitHub
@@ -89,7 +89,7 @@ function Hero() {
                 href={profile.linkedin}
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center gap-2 border border-slate-600 hover:border-blue-500 hover:text-blue-400 px-6 py-3 rounded-xl transition"
+                className="flex items-center gap-2 border border-slate-600 text-white hover:border-blue-500 hover:text-blue-400 px-6 py-3 rounded-xl transition"
               >
                 <FaLinkedin />
                 LinkedIn
