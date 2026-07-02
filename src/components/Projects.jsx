@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import projects from "../data/projects";
 
 function Projects() {
@@ -54,9 +55,23 @@ function Projects() {
 
                 </div>
 
-                <button className="mt-8 w-full bg-blue-600 hover:bg-blue-700 py-3 rounded-xl font-semibold transition">
-                  View Project
-                </button>
+                {/* Navigation Button */}
+
+                {project.route ? (
+                  <Link
+                     to={project.route}
+                     className="mt-8 block w-full text-center bg-blue-600 hover:bg-blue-700 py-3 rounded-xl font-semibold transition"
+  >
+                     View Project
+                    </Link>
+                ) : (
+                  <button
+                     disabled
+                     className="mt-8 w-full bg-slate-600 text-slate-300 py-3 rounded-xl cursor-not-allowed"
+  >
+                     Coming Soon
+                     </button>
+                )}
 
               </div>
 

@@ -1,7 +1,9 @@
 const projects = [
   {
     id: 1,
+
     title: "Smart Electronic Voting Machine",
+
     description:
       "A secure electronic voting machine built using Arduino with an ILI9341 TFT display, vote locking, password-protected result viewing, and graphical vote counting.",
 
@@ -9,17 +11,23 @@ const projects = [
       "Arduino",
       "Embedded C",
       "ILI9341 TFT",
-      "EEPROM"
+      "EEPROM",
     ],
 
     github: "#",
 
-    image: ""
+    image: "",
+
+    route: "/projects/electronic-voting-machine",
+
+    featured: true,
   },
 
   {
     id: 2,
+
     title: "Automated Attendance System",
+
     description:
       "AI-powered attendance system using YOLOv5 capable of recognizing multiple students from a group photograph.",
 
@@ -27,30 +35,40 @@ const projects = [
       "Python",
       "YOLOv5",
       "OpenCV",
-      "Deep Learning"
+      "Deep Learning",
     ],
 
     github: "#",
 
-    image: ""
+    image: "",
+
+    route: null,
+
+    featured: false,
   },
 
   {
     id: 3,
+
     title: "High-Power Rocket Design",
+
     description:
       "Designed and simulated a high-power model rocket using OpenRocket, meeting stability, apogee, Mach number, and recovery constraints.",
 
     technologies: [
       "OpenRocket",
       "Rocket Simulation",
-      "Aerodynamics"
+      "Aerodynamics",
     ],
 
     github: "#",
 
-    image: ""
-  }
+    image: "",
+
+    route: null,
+
+    featured: false,
+  },
 ];
 
 export default projects;
