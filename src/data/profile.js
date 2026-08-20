@@ -31,7 +31,7 @@ const profile = {
   github: "https://github.com/sreelakshmi-jagannadham",
 
   linkedin:
-    "https://www.linkedin.com/in/sree-lakshmi-jagannadham-866140283",
+    "linkedin.com/in/jagannadham-sree-lakshmi-866140283",
 
   resume: "/documents/resume.pdf",
 

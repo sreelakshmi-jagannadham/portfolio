@@ -1,70 +1,148 @@
+import { motion } from "framer-motion";
 import experience from "../data/experience";
-import { FaBriefcase, FaCalendarAlt, FaMapMarkerAlt } from "react-icons/fa";
+import {
+  FaBriefcase,
+  FaCalendarAlt,
+  FaMapMarkerAlt,
+  FaCheckCircle,
+} from "react-icons/fa";
 
 function Experience() {
   return (
     <section
       id="experience"
-      className="bg-slate-950 py-24 px-6"
+      className="bg-slate-950 text-white py-24 px-6 overflow-hidden"
     >
       <div className="max-w-7xl mx-auto">
 
-        {/* Heading */}
+        {/* ================= HEADING ================= */}
 
-        <div className="text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center"
+        >
+          <p className="text-blue-400 uppercase tracking-[0.25em] text-sm font-semibold">
+            Professional Journey
+          </p>
 
-          <h2 className="text-5xl font-black text-white">
+          <h2 className="text-4xl md:text-5xl font-bold mt-3">
             My <span className="text-blue-500">Experience</span>
           </h2>
 
-          <p className="mt-6 text-slate-400 text-lg">
-            Internship, training programs, and practical engineering experience.
+          <p className="mt-5 text-slate-400 max-w-2xl mx-auto leading-7">
+            Internship, training programs, and practical engineering
+            experience that have strengthened my technical skills.
           </p>
+        </motion.div>
 
-        </div>
 
-        {/* Experience Cards */}
+        {/* ================= EXPERIENCE CARDS ================= */}
 
         <div className="mt-16 space-y-8">
 
           {experience.map((item, index) => (
 
-            <div
+            <motion.div
               key={index}
-              className="bg-slate-800 rounded-3xl p-8 border border-slate-700 hover:border-blue-500 transition duration-300"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{
+                duration: 0.6,
+                delay: index * 0.1,
+              }}
+              className="
+                group
+                relative
+                bg-slate-800/80
+                backdrop-blur-md
+                border
+                border-slate-700
+                rounded-3xl
+                p-8
+                md:p-10
+                hover:border-blue-500/50
+                hover:-translate-y-1
+                hover:shadow-xl
+                hover:shadow-blue-500/5
+                transition-all duration-300
+              "
             >
 
-              <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-4">
+              {/* Top Accent */}
+              <div
+                className="
+                  absolute
+                  top-0
+                  left-10
+                  right-10
+                  h-1
+                  rounded-b-full
+                  bg-blue-500/0
+                  group-hover:bg-blue-500
+                  transition-all duration-300
+                "
+              />
 
+              {/* Header */}
+              <div className="flex flex-col lg:flex-row lg:justify-between lg:items-start gap-6">
+
+                {/* Role & Company */}
                 <div>
 
-                  <h3 className="text-3xl font-bold text-white">
-                    {item.role}
-                  </h3>
+                  <div className="flex items-center gap-3">
 
-                  <div className="flex items-center gap-2 mt-3 text-blue-400">
+                    <div
+                      className="
+                        w-12
+                        h-12
+                        rounded-xl
+                        bg-blue-500/10
+                        border
+                        border-blue-500/20
+                        flex
+                        items-center
+                        justify-center
+                        text-blue-400
+                      "
+                    >
+                      <FaBriefcase />
+                    </div>
 
-                    <FaBriefcase />
+                    <div>
 
-                    <span>{item.company}</span>
+                      <h3 className="text-2xl md:text-3xl font-bold text-white">
+                        {item.role}
+                      </h3>
+
+                      <p className="mt-1 text-blue-400 font-medium">
+                        {item.company}
+                      </p>
+
+                    </div>
 
                   </div>
 
                 </div>
 
-                <div className="text-slate-400 space-y-2">
 
-                  <div className="flex items-center gap-2">
+                {/* Duration & Location */}
+                <div className="text-slate-400 space-y-3">
 
-                    <FaCalendarAlt />
+                  <div className="flex items-center gap-3">
+
+                    <FaCalendarAlt className="text-blue-400" />
 
                     <span>{item.duration}</span>
 
                   </div>
 
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-3">
 
-                    <FaMapMarkerAlt />
+                    <FaMapMarkerAlt className="text-blue-400" />
 
                     <span>{item.location}</span>
 
@@ -74,17 +152,22 @@ function Experience() {
 
               </div>
 
-              {/* Description */}
 
-              <ul className="mt-8 space-y-3">
+              {/* Divider */}
+              <div className="border-t border-slate-700 mt-8" />
+
+
+              {/* Description */}
+              <ul className="mt-8 space-y-4">
 
                 {item.description.map((point, i) => (
 
                   <li
                     key={i}
-                    className="text-slate-300 flex gap-3"
+                    className="text-slate-300 flex items-start gap-3 leading-7"
                   >
-                    <span className="text-blue-500">✔</span>
+
+                    <FaCheckCircle className="text-blue-500 mt-1 flex-shrink-0" />
 
                     <span>{point}</span>
 
@@ -94,15 +177,28 @@ function Experience() {
 
               </ul>
 
-              {/* Technologies */}
 
+              {/* Technologies */}
               <div className="mt-8 flex flex-wrap gap-3">
 
                 {item.technologies.map((tech, i) => (
 
                   <span
                     key={i}
-                    className="bg-blue-600 px-4 py-2 rounded-lg text-white"
+                    className="
+                      px-4
+                      py-2
+                      rounded-full
+                      text-sm
+                      font-medium
+                      bg-blue-500/10
+                      border
+                      border-blue-500/20
+                      text-blue-300
+                      hover:bg-blue-500/20
+                      hover:border-blue-500/40
+                      transition
+                    "
                   >
                     {tech}
                   </span>
@@ -111,7 +207,7 @@ function Experience() {
 
               </div>
 
-            </div>
+            </motion.div>
 
           ))}
 

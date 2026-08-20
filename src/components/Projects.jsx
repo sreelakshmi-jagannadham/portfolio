@@ -9,68 +9,162 @@ function Projects() {
     >
       <div className="max-w-7xl mx-auto">
 
-        <h2 className="text-4xl md:text-5xl font-bold text-center">
-          Featured <span className="text-blue-500">Projects</span>
-        </h2>
+        {/* Section Heading */}
+        <div className="text-center">
 
-        <p className="text-slate-400 text-center mt-4">
-          A selection of engineering and software projects I've worked on.
-        </p>
+          <p className="text-blue-400 uppercase tracking-[0.25em] text-sm font-semibold">
+            My Work
+          </p>
 
-        <div className="grid lg:grid-cols-3 gap-8 mt-16">
+          <h2 className="text-4xl md:text-5xl font-bold mt-3">
+            Featured <span className="text-blue-500">Projects</span>
+          </h2>
+
+          <p className="text-slate-400 max-w-2xl mx-auto mt-5 leading-7">
+            A selection of engineering and software projects I've worked on,
+            combining electronics, embedded systems, and intelligent software.
+          </p>
+
+        </div>
+
+        {/* Project Cards */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
 
           {projects.map((project) => (
 
             <div
               key={project.id}
-              className="bg-slate-800 rounded-3xl overflow-hidden shadow-lg hover:-translate-y-2 hover:bg-slate-700 transition duration-300"
+              className="
+                group
+                bg-slate-800/70
+                backdrop-blur-md
+                border border-slate-700
+                rounded-3xl
+                overflow-hidden
+                shadow-lg
+                hover:border-blue-500/50
+                hover:-translate-y-2
+                hover:shadow-blue-500/10
+                transition-all duration-300
+              "
             >
 
-              <div className="h-52 bg-slate-700 flex items-center justify-center text-6xl">
-                📷
+              {/* Project Image */}
+              <div className="relative h-56 bg-slate-700 overflow-hidden">
+
+                {project.image ? (
+                  <img
+                    src={project.image}
+                    alt={`${project.title} project`}
+                    className="
+                      w-full
+                      h-full
+                      object-cover
+                      group-hover:scale-105
+                      transition-transform duration-500
+                    "
+                  />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center">
+                    <span className="text-5xl opacity-50">📷</span>
+                  </div>
+                )}
+
+                {/* Image Overlay */}
+                <div
+                  className="
+                    absolute
+                    inset-0
+                    bg-gradient-to-t
+                    from-slate-900/80
+                    via-transparent
+                    to-transparent
+                    pointer-events-none
+                  "
+                />
+
               </div>
 
-              <div className="p-6">
+              {/* Project Content */}
+              <div className="p-7">
 
-                <h3 className="text-2xl font-bold">
+                {/* Category */}
+                {project.category && (
+                  <p className="text-blue-400 text-xs uppercase tracking-widest font-semibold">
+                    {project.category}
+                  </p>
+                )}
+
+                {/* Title */}
+                <h3 className="text-2xl font-bold mt-3">
                   {project.title}
                 </h3>
 
-                <p className="mt-4 text-slate-300 leading-7">
+                {/* Description */}
+                <p className="mt-4 text-slate-400 leading-7">
                   {project.description}
                 </p>
 
+                {/* Technologies */}
                 <div className="mt-6 flex flex-wrap gap-2">
 
-                  {project.technologies.map((tech, index) => (
-
+                  {project.technologies?.map((tech, index) => (
                     <span
                       key={index}
-                      className="bg-blue-600 px-3 py-1 rounded-lg text-sm"
+                      className="
+                        px-3
+                        py-1.5
+                        rounded-full
+                        text-xs
+                        font-medium
+                        bg-blue-500/10
+                        border border-blue-500/20
+                        text-blue-300
+                        hover:bg-blue-500/20
+                        transition
+                      "
                     >
                       {tech}
                     </span>
-
                   ))}
 
                 </div>
 
                 {/* Navigation Button */}
-
                 {project.route ? (
                   <Link
-                     to={project.route}
-                     className="mt-8 block w-full text-center bg-blue-600 hover:bg-blue-700 py-3 rounded-xl font-semibold transition"
-  >
-                     View Project
-                    </Link>
+                    to={project.route}
+                    className="
+                      mt-8
+                      block
+                      w-full
+                      text-center
+                      bg-blue-600
+                      hover:bg-blue-500
+                      hover:-translate-y-1
+                      py-3
+                      rounded-xl
+                      font-semibold
+                      transition-all duration-300
+                    "
+                  >
+                    View Project →
+                  </Link>
                 ) : (
                   <button
-                     disabled
-                     className="mt-8 w-full bg-slate-600 text-slate-300 py-3 rounded-xl cursor-not-allowed"
-  >
-                     Coming Soon
-                     </button>
+                    disabled
+                    className="
+                      mt-8
+                      w-full
+                      bg-slate-700
+                      text-slate-400
+                      py-3
+                      rounded-xl
+                      cursor-not-allowed
+                    "
+                  >
+                    Coming Soon
+                  </button>
                 )}
 
               </div>

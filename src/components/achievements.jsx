@@ -1,39 +1,126 @@
+import { motion } from "framer-motion";
 import achievements from "../data/achievements";
 
 function Achievements() {
   return (
-    <section id="achievements" className="bg-slate-950 py-24 px-6">
+    <section
+      id="achievements"
+      className="bg-slate-950 text-white py-24 px-6 overflow-hidden"
+    >
       <div className="max-w-7xl mx-auto">
 
-        <div className="text-center mb-16">
-          <h2 className="text-5xl font-black text-white">
+        {/* ================= HEADING ================= */}
+
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
+          <p className="text-yellow-400 uppercase tracking-[0.25em] text-sm font-semibold">
+            Milestones
+          </p>
+
+          <h2 className="text-4xl md:text-5xl font-bold mt-3">
             My <span className="text-blue-500">Achievements</span>
           </h2>
 
-          <p className="mt-5 text-slate-400 text-lg">
-            Highlights from my engineering journey.
+          <p className="mt-5 text-slate-400 max-w-2xl mx-auto leading-7">
+            Highlights from my academic, technical, and engineering journey.
           </p>
-        </div>
+        </motion.div>
+
+
+        {/* ================= ACHIEVEMENT CARDS ================= */}
 
         <div className="grid md:grid-cols-2 gap-8">
 
           {achievements.map((item, index) => (
-            <div
+
+            <motion.div
               key={index}
-              className="bg-slate-800 border border-slate-700 hover:border-blue-500 rounded-3xl p-8 transition duration-300"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{
+                duration: 0.6,
+                delay: index * 0.1,
+              }}
+              className="
+                group
+                relative
+                bg-slate-800/80
+                backdrop-blur-md
+                border
+                border-slate-700
+                rounded-3xl
+                p-8
+                md:p-10
+                overflow-hidden
+                hover:border-yellow-500/40
+                hover:-translate-y-2
+                hover:shadow-xl
+                hover:shadow-yellow-500/5
+                transition-all duration-300
+              "
             >
-              <div className="text-5xl">
+
+              {/* Background Number */}
+              <div className="absolute top-4 right-6 text-7xl font-black text-slate-700/30 select-none">
+                {String(index + 1).padStart(2, "0")}
+              </div>
+
+
+              {/* Icon */}
+              <div
+                className="
+                  relative
+                  w-16
+                  h-16
+                  rounded-2xl
+                  bg-yellow-500/10
+                  border
+                  border-yellow-500/20
+                  flex
+                  items-center
+                  justify-center
+                  text-4xl
+                  group-hover:scale-110
+                  transition-transform duration-300
+                "
+              >
                 {item.icon}
               </div>
 
-              <h3 className="mt-6 text-2xl font-bold text-white">
+
+              {/* Title */}
+              <h3 className="relative mt-7 text-2xl font-bold text-white">
                 {item.title}
               </h3>
 
-              <p className="mt-4 text-slate-400 leading-7">
+
+              {/* Description */}
+              <p className="relative mt-4 text-slate-400 leading-7">
                 {item.description}
               </p>
-            </div>
+
+
+              {/* Accent */}
+              <div
+                className="
+                  mt-7
+                  h-1
+                  w-12
+                  rounded-full
+                  bg-yellow-500
+                  group-hover:w-20
+                  transition-all duration-300
+                "
+              />
+
+            </motion.div>
+
           ))}
 
         </div>

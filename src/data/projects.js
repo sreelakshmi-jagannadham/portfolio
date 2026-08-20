@@ -14,9 +14,9 @@ const projects = [
       "EEPROM",
     ],
 
-    github: "#",
+    github: "https://github.com/sreelakshmi-jagannadham/Smart-Voting-System-Arduino",
 
-    image: "",
+    image: "/images/voting/home-screen.png",
 
     route: "/projects/electronic-voting-machine",
 
