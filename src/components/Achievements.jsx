@@ -4,7 +4,7 @@ import achievements from "../data/achievements";
 function Achievements() {
   return (
     <section
-      id="achievements"
+      id="Achievements"
       className="bg-slate-950 text-white py-24 px-6 overflow-hidden"
     >
       <div className="max-w-7xl mx-auto">

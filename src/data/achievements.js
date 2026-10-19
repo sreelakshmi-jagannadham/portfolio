@@ -1,4 +1,4 @@
-const achievements = [
+const Achievements = [
   {
     title: "India Space Lab Winter Internship",
     description:
@@ -24,4 +24,4 @@ const achievements = [
     icon: "🎯",
   },
 ];
-export default achievements;
+export default Achievements;
