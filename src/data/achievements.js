@@ -17,11 +17,6 @@ const Achievements = [
       "Developed an automated attendance system using YOLOv5 and Deep Learning for real-time face detection.",
     icon: "🤖",
   },
-  {
-    title: "GATE 2027 Preparation",
-    description:
-      "Actively preparing for GATE 2027 in Electronics & Communication Engineering with a structured study plan.",
-    icon: "🎯",
-  },
+  
 ];
 export default Achievements;
